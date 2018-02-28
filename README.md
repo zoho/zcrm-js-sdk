@@ -29,13 +29,13 @@ _PS_ : Note the https configuration difference in "Client Domain" and "JavaScrip
 
 
 
-######Note : 
+**Note**
 - If a single page uses many ajax calls at the same time and the token is not set. All the responses will be empty json object string '{}' . This one has to be handled for every request.
 - Once token is set for the first time, the page will be reloaded.
 
 
 
-######Object Hierarchy
+**Object Hierarchy**
 
 \* - indicates mandatory param and input has to be passed as parameters (as JSON) for the functions
 
