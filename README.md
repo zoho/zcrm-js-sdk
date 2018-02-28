@@ -1,5 +1,5 @@
 # zcrm-js-sdk
-JS Sdk for Zoho CRM
+######JS Sdk for Zoho CRM
 
 
 Zoho CRM offers REST APIs for communication between several clients. This SDK helps you to make API calls from the domains registered with accounts.zoho.{com/eu/com.cn}. 
@@ -9,7 +9,7 @@ Refer [Building Webapp](https://zcms.zohocorp.com/crm/help/developer/webapp-sdk/
 
 
 
-Please follow the steps to work with JS SDK
+**Please follow the steps to work with JS SDK**
 * Register the client from CRM UI and note the client id
 * Create a new project using the command '**zet init**' via terminal/command line. Choose the option '**ZES**' and give the project name.
 * New folder will be created with the project name. Inside that, there will be a file **plugin\_manifest.json**. Update the client id in that file and required scopes to be used in the web app
@@ -29,9 +29,14 @@ _PS_ : Note the https configuration difference in "Client Domain" and "JavaScrip
 
 
 
-**Note** : 
+######**Note** : 
 - If a single page uses many ajax calls at the same time and the token is not set. All the responses will be empty json object string '{}' . This one has to be handled for every request.
 - Once token is set for the first time, the page will be reloaded.
+
+
+input has to be passed as params (as JSON) for some of the functions
+
+######**Object Hierarchy**
 
 
 ZCRM
@@ -39,30 +44,30 @@ ZCRM
   - getAccess
   - revokeAccess
 - RECORDS
-  - get
-  - post
-  - put
-  - delete
-  - getNotes
-  - getRelated
-  - getAllDeletedRecords
-  - getRecycleBinRecords
-  - getPermanentlyDeletedRecords
+  - get (\*input.module, input.params)
+  - post (\*input.module, \*input.body, \*headers['Content-Type'])
+  - put (\*input.module, \*input.body, \*headers['Content-Type'])
+  - delete (\*input.module, \*input.id)
+  - getNotes (\*input.module, \*input.id)
+  - getRelated (\*input.module, \*input.id, \*input.relatedModule)
+  - getAllDeletedRecords (\*input.module)
+  - getRecycleBinRecords (\*input.module)
+  - getPermanentlyDeletedRecords (\*input.module)
 - SETTINGS
-  - getFields
-  - getLayouts
-  - getCustomViews
-  - updateCustomViews
-  - getModules
-  - getRoles
-  - getProfiles
-  - getRelatedLists
+  - getFields (\*input.params, input.id)
+  - getLayouts (\*input.params, input.id)
+  - getCustomViews (\*input.params, input.id)
+  - updateCustomViews (\*input.params, input.id)
+  - getModules (input.module)
+  - getRoles (input.id)
+  - getProfiles (input.id)
+  - getRelatedLists (input.id)
 - ACTIONS
-  - convert
+  - convert (\*input.id, \*input.body)
 - USERS
-  - get
+  - get (input.id)
 - ORG
-  - get
+  - get 
 - ATTACHMENTS
   - uploadFile
   - deleteFile
