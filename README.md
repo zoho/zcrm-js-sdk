@@ -29,46 +29,47 @@ _PS_ : Note the https configuration difference in "Client Domain" and "JavaScrip
 
 
 
-######**Note** : 
+######Note : 
 - If a single page uses many ajax calls at the same time and the token is not set. All the responses will be empty json object string '{}' . This one has to be handled for every request.
 - Once token is set for the first time, the page will be reloaded.
 
 
-input has to be passed as params (as JSON) for some of the functions
 
-######**Object Hierarchy**
+######Object Hierarchy
+
+\* - indicates mandatory param and input has to be passed as parameters (as JSON) for the functions
 
 
-ZCRM
-- AUTH
+**ZCRM**
+- **AUTH**
   - getAccess
   - revokeAccess
-- RECORDS
-  - get (\*input.module, input.params)
-  - post (\*input.module, \*input.body, \*headers['Content-Type'])
-  - put (\*input.module, \*input.body, \*headers['Content-Type'])
-  - delete (\*input.module, \*input.id)
-  - getNotes (\*input.module, \*input.id)
-  - getRelated (\*input.module, \*input.id, \*input.relatedModule)
-  - getAllDeletedRecords (\*input.module)
-  - getRecycleBinRecords (\*input.module)
-  - getPermanentlyDeletedRecords (\*input.module)
-- SETTINGS
-  - getFields (\*input.params, input.id)
-  - getLayouts (\*input.params, input.id)
-  - getCustomViews (\*input.params, input.id)
-  - updateCustomViews (\*input.params, input.id)
-  - getModules (input.module)
-  - getRoles (input.id)
-  - getProfiles (input.id)
-  - getRelatedLists (input.id)
-- ACTIONS
-  - convert (\*input.id, \*input.body)
-- USERS
-  - get (input.id)
-- ORG
+- **RECORDS**
+  - get - (\*input.module, input.params)
+  - post - (\*input.module, \*input.body, \*headers['Content-Type'])
+  - put - (\*input.module, \*input.body, \*headers['Content-Type'])
+  - delete - (\*input.module, \*input.id)
+  - getNotes - (\*input.module, \*input.id)
+  - getRelated - (\*input.module, \*input.id, \*input.relatedModule)
+  - getAllDeletedRecords - (\*input.module)
+  - getRecycleBinRecords - (\*input.module)
+  - getPermanentlyDeletedRecords - (\*input.module)
+- **SETTINGS**
+  - getFields - (\*input.params, input.id)
+  - getLayouts - (\*input.params, input.id)
+  - getCustomViews - (\*input.params, input.id)
+  - updateCustomViews - (\*input.params, input.id)
+  - getModules - (input.module)
+  - getRoles - (input.id)
+  - getProfiles - (input.id)
+  - getRelatedLists - (input.id)
+- **ACTIONS**
+  - convert - (\*input.id, \*input.body)
+- **USERS**
+  - get - (input.id)
+- **ORG**
   - get 
-- ATTACHMENTS
+- **ATTACHMENTS**
   - uploadFile
   - deleteFile
   - downloadFile
