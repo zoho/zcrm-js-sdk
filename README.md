@@ -1,6 +1,4 @@
 # zcrm-js-sdk
-######JS Sdk for Zoho CRM
-
 
 Zoho CRM offers REST APIs for communication between several clients. This SDK helps you to make API calls from the domains registered with accounts.zoho.{com/eu/com.cn}. 
 
@@ -37,7 +35,7 @@ _PS_ : Note the https configuration difference in "Client Domain" and "JavaScrip
 ---
 **Object Hierarchy**
 
-\* - indicates mandatory param and input has to be passed as parameters (as JSON) for the functions
+\* - indicates mandatory param and input has to be passed as JSON for the functions
 
 
 **ZCRM**
