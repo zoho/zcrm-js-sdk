@@ -1,0 +1,9 @@
+{
+  "service": "ZES",
+  "client": {
+    "id": "1000.W5HU5T0IQ0G8970897QMESEKERPIAX",
+    "scope": "ZohoCRM.modules.ALL,ZohoCRM.settings.ALL",
+    "accounts-url": "https://accounts.zoho.com"
+  },
+  "file_location": "/app/app_file.html"
+}

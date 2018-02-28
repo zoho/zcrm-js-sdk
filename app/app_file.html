@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script  src="https://code.jquery.com/jquery-3.3.1.min.js" />
+<script src="zcrmsdk.js" />
+
+<script type="text/javascript">
+	ZCRM.init({'full_grant':true});	// if the user is going to choose 'Grant access for the entire session' 
+	function onLoadBody(){
+		createListView();
+	}
+
+	function createListView(){
+		document.getElementById("createView").style.display='none';
+		document.getElementById("listview").style.display='block';
+		var input = {'module' : 'Leads'};
+
+	        ZCRM.API.RECORDS.get(input).then(function(resp){
+                	var data = JSON.parse(resp).data;
+        	        console.log(data); 
+			var html = "<table><tr><th></th><th>Last Name</th><th>Company</th><th>Email</th><th>Lead Source</th></tr>"
+                	for(var i=0; i<data.length; i++){
+                        	html += "<tr data-id="+data[i].id+"><td><button onclick='edit(\""+data[i].id+"\")'>Edit</button>&nbsp;<button onclick='deleteR(\""+data[i].id+"\")'>Delete</button></td><td>"+(data[i].Last_Name)+"</td><td>"+data[i].Company+"</td><td>"+(data[i].Email==null?"":data[i].Email)+"</td><td>"+(data[i].Lead_Source==null?"":data[i].Lead_Source)+"</td><td></tr>";
+                	}
+	                html += "</table>";
+        	        document.getElementById('listview').innerHTML=html;
+
+	            });
+	}
+
+
+	function edit(id){
+		alert("This will update Last Name with 1")
+
+		var input = {'module':'Leads', 'body':{'data':[{"id":id,"Last_Name":$("tr[data-id='"+id+"'] td")[1].innerHTML+"1"}]}};
+        	headers = {'Content-Type': 'application/json'};
+	       	ZCRM.API.RECORDS.put(input).then(function(resp){
+        	        var jsonData = JSON.parse(resp);
+				location.reload();
+	        });
+	}
+ 	function deleteR(id){
+
+		var input = {'module':'Leads', 'id':id};
+	       	ZCRM.API.RECORDS.delete(input).then(function(resp){
+		                var jsonData = JSON.parse(resp);
+				location.reload();
+        	});
+	}
+	function createLead(){
+		document.getElementById("listview").style.display='none';
+		document.getElementById("createView").style.display='block';
+
+	}
+	function createLeadForm(){
+		var formObj = {};
+		var inputs = $('#leadForm').serializeArray();
+		    $.each(inputs, function (i, input) {
+		        formObj[input.name] = input.value;
+		    });
+		    
+			var input = {'module':'Leads', 'body':{'data':[formObj]}};
+	        headers = {'Content-Type': 'application/json'};
+	       	ZCRM.API.RECORDS.post(input).then(function(resp){
+	                var jsonData = JSON.parse(resp);
+					location.reload();
+	        });
+
+			return false;
+	}
+
+</script>
+  </head>
+<body onload="onLoadBody();">
+	<div class='full'>
+		<div class="right">
+			<button onclick="createLead()">Create new Lead</button>
+			<div id="listview">
+				<table>
+					<tr><th></th><th>Last Name</th><th>Company</th><th>Email</th><th>Lead Source</th></tr>
+					<tr><td>cb</td><td>Raghu Ram</td><td>Zoho</td><td>12547</td><td>Web</td></tr>
+				</table>
+			</div>
+			<div id='createView'>
+				<form id='leadForm' onsubmit="createLeadForm(); return false;">
+					<div id='formelement'>
+						Last Name : <input type="text" name="Last_Name" />
+					</div>
+					<div id='formelement'>
+						Company : <input type="text" name="Company" />
+					</div>
+					<div id='formelement'>
+						Email : <input type="text" name="Email" />
+					</div>
+					<div id='formelement'>
+						Lead Source : <input type="text" name="Lead_Source" />
+					</div>
+					<input type="submit" name="Save">
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
