@@ -6,6 +6,9 @@ Zoho CRM offers REST APIs for communication between several clients. This SDK he
 
 Refer [Building Webapp](https://zcms.zohocorp.com/crm/help/developer/webapp-sdk/build-webapp.html) and [Install CLI](https://zcms.zohocorp.com/crm/help/developer/webapp-sdk/install-cli.html) using [ZET](https://www.npmjs.com/package/zoho-extension-toolkit) before proceeding further
 
+
+
+
 Please follow the steps to work with JS SDK
 * Register the client from CRM UI and note the client id
 * Create a new project using the command '**zet init**' via terminal/command line. Choose the option '**ZES**' and give the project name.
@@ -29,4 +32,43 @@ _PS_ : Note the https configuration difference in "Client Domain" and "JavaScrip
 **Note** : 
 - If a single page uses many ajax calls at the same time and the token is not set. All the responses will be empty json object string '{}' . This one has to be handled for every request.
 - Once token is set for the first time, the page will be reloaded.
-
+```
+ZCRM
+- AUTH
+  - getAccess
+  - revokeAccess
+- RECORDS
+  - get
+  - post
+  - put
+  - delete
+  - getNotes
+  - getRelated
+  - getAllDeletedRecords
+  - getRecycleBinRecords
+  - getPermanentlyDeletedRecords
+- SETTINGS
+  - getFields
+  - getLayouts
+  - getCustomViews
+  - updateCustomViews
+  - getModules
+  - getRoles
+  - getProfiles
+  - getRelatedLists
+- ACTIONS
+  - convert
+- USERS
+  - get
+- ORG
+  - get
+- ATTACHMENTS
+  - uploadFile
+  - deleteFile
+  - downloadFile
+  - uploadLink
+  - uploadPhoto
+  - downloadPhoto
+  - deletePhoto
+- init
+```
