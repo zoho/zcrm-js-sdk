@@ -9,7 +9,7 @@ Refer [Building Webapp](https://www.zoho.com/crm/help/developer/webapp-sdk/build
 
 **Please follow the steps to work with JS SDK**
 * Register the client from CRM UI and note the client id
-* Create a new project using the command '**zet init**' via terminal/command line. Choose the option '**ZES**' and give the project name.
+* Create a new project using the command '**zet init**' via terminal/command line. Choose the option '**Catalyst**' and give the project name.
 * New folder will be created with the project name. Inside that, there will be a file **plugin\_manifest.json**. Update the client id in that file and required scopes to be used in the web app
 * Under the project folder, there will be another folder named '**app**'. This will act as the base.
 * Include the '**zcrmsdk.js**' file (available in _app_ folder) and use it in your html files.
