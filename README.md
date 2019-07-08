@@ -15,18 +15,21 @@ Refer [Building Webapp](https://www.zoho.com/crm/help/developer/webapp-sdk/build
 * Include the '**zcrmsdk.js**' file (available in _app_ folder) and use it in your html files.
 * **ZCRM.API.AUTH.getAccess()** will create a token by authenticating the user.
 * After the development, run the command '**zet pack**' from the project base folder and upload it in CRM UI. FYI: Only one app can be uploaded for each client. While updating with new app, old one has to be deleted. Also redirect url will be changed.
-* To know the redirect url, ZCRM.API.AUTH.getAccess() function has to be accessed from web app. It'll redirect to accounts.zoho.com/oauth/v2/auth along with a parameter redirect\_uri. Take that redirect\_uri and configure it in accounts.zoho.com/developerconsole. 
+* To know the redirect url, ZCRM.API.AUTH.getAccess() function has to be accessed from web app. It'll redirect to accounts.zoho.com/oauth/v2/auth along with a parameter redirect\_uri. Take that redirect\_uri and configure it in https://api-console.zoho.com/. 
 Eg : if the redirect\_uri is "`https://99000000223015.zappscontents.com/appfiles/99000000223015/1.0/1dd62561c00429f2c4970bf4f2b4dc09142d08b6949a17a5c3388f30851ec9cf/redirect.html`"
 Then 
 
-	"**Client Domain**" is "`99000000223015.zappscontents.com`"
+	"**Authorized redirect URIs**" is "`https://99000000223015.zappscontents.com/appfiles/99000000223015/1.0/1dd62561c00429f2c4970bf4f2b4dc09142d08b6949a17a5c3388f30851ec9cf/redirect.html`"
 
 	"**JavaScript Domain**" is "`https://99000000223015.zappscontents.com`"
 
-_PS_ : Note the https configuration difference in "Client Domain" and "JavaScript Domain".
 
-
-
+To test it in local machine:- 
+* Create a redirect.html page within the app folder.
+* Run it using the '**zet run**' via terminal/command line.
+* Enter 127.0.0.1:{your_port_number} for eg. 127.0.0.1:5000 in the browser address bar and select the app_file.html
+* It'll redirect to accounts.zoho.com/oauth/v2/auth along with a parameter redirect\_uri. Take that redirect\_uri and configure it in https://api-console.zoho.com/. 
+* If the page successfully redirects to the redirect.html page then the app works as intended.
 **Note**
 - If a single page uses many ajax calls at the same time and the token is not set. All the responses will be empty json object string `'{}'` . This one has to be handled for every request.
 - Once token is set for the first time, the page will be reloaded.

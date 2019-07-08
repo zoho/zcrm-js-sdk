@@ -1,5 +1,5 @@
 {
-  "service": "ZES",
+  "service": "CATALYST",
   "client": {
     "id": "{client-id}",
     "scope": "ZohoCRM.modules.ALL,ZohoCRM.settings.ALL",

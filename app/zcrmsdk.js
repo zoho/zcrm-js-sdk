@@ -382,8 +382,12 @@ function auth()
                 var path = window.location.pathname;
                 var redirect_url = window.location.origin;
                 var pathSplit = path.split('/');
-                for (var i=0;i<5;i++){
+                var length=pathSplit.length
+                for (var i=0;i<length-2;i++){
                        redirect_url +=pathSplit[i]+"/";
+                }
+                if(location.hostname=="127.0.0.1" ||location.hostname=="localhost" ||location.hostname=="" ){
+                    redirect_url += "app/"
                 }
                 redirect_url = redirect_url + "redirect.html";
 
@@ -426,5 +430,3 @@ function auth()
 		}
 	}
 })(this)
-
-       
