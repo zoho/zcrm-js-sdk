@@ -1,4 +1,3 @@
-
 var libBase, headers, HTTP_METHODS, version;
 version = 2;
 HTTP_METHODS = {
@@ -155,6 +154,27 @@ function getParameterByName(name, url)
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+function sdk()
+{
+   return {
+       initialize : function (configuration)
+       {
+           if(document.getElementById("zes_client_scope") == null){
+                var elem = document.createElement('div');
+                elem.setAttribute("data-scope",configuration.scopes);
+                elem.setAttribute("data-clientid",configuration.client_id);
+                elem.setAttribute("data-accounts-url",configuration.accounts_url);
+                elem.setAttribute("id","zes_client_scope");
+
+                document.body.appendChild(elem);
+            }
+
+            var input = {};
+               ZCRM.API.USERS.get(input).then(function(resp){
+                });
+       }
+   }
 }
 function actions()
 {
@@ -387,6 +407,10 @@ function auth()
                        redirect_url +=pathSplit[i]+"/";
                 }
                 if(location.hostname=="127.0.0.1" ||location.hostname=="localhost" ||location.hostname=="" ){
+                    if(length-2 == 0)
+                    {
+                        redirect_url += "/";
+                    }
                     redirect_url += "app/"
                 }
                 redirect_url = redirect_url + "redirect.html";
@@ -414,6 +438,7 @@ function auth()
 	return {
         API : (function (argument) {
 			return{
+                SDK : new sdk(),
                 AUTH : new auth(),
                 RECORDS : new records(),
                 SETTINGS : new settings(),
