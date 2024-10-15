@@ -1,13 +1,7 @@
 # Archival Notice:
 
 This SDK is archived. You can continue to use it, but no new features or support requests will be accepted. For the new version, refer to
-
-ZOHO CRM v2 API SDK :
-- [GitHub Repository](https://github.com/zoho/zohocrm-javascript-sdk-2.0)
-- [Help Doc](https://www.zoho.com/crm/developer/docs/client-side-sdks/v2/javascript.html)
-
-ZOHO CRM v2.1 API SDK :
-- [GitHub Repository](https://github.com/zoho/zohocrm-javascript-sdk-2.1)
+https://www.zoho.com/crm/developer/docs/sdk/client-side/javascript-sdk.html
 
 # zcrm-js-sdk
 
